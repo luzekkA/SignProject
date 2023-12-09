@@ -54,4 +54,9 @@ public class TeamController {
         String id = JwtUtil.getId(token);
         return this.team_userService.QuitTeamByUserId(id, team);
     }
+
+    @GetMapping("/getuser")
+    public ResultJson<Object> GetUser(@RequestParam("team") int team) {
+        return this.team_userService.GetUserByTeamId(team);
+    }
 }

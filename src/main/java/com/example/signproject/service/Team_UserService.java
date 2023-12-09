@@ -11,4 +11,6 @@ public interface Team_UserService extends IService<Team_User> {
     ResultJson<Object> GetTeamByUserId(String id);
 
     ResultJson<Object> QuitTeamByUserId(String id, int teamId);
+
+    ResultJson<Object> GetUserByTeamId(int teamId);
 }
