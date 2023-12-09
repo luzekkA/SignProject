@@ -48,8 +48,8 @@ public class TeamController {
         return this.team_userService.GetTeamByUserId(id);
     }
 
-    @DeleteMapping("/quitteam/{team}")
-    public ResultJson<Object> QuitTeam(@PathVariable int team, @RequestHeader("token") String token) {
+    @DeleteMapping("/quitteam")
+    public ResultJson<Object> QuitTeam(@RequestParam("team") int team, @RequestHeader("token") String token) {
         //String token = request.getHeader("token");
         String id = JwtUtil.getId(token);
         return this.team_userService.QuitTeamByUserId(id, team);

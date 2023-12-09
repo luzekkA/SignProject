@@ -9,8 +9,6 @@ import com.example.signproject.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -50,9 +48,9 @@ public class UserController {
         return this.userService.updateUser(user);
     }
 
-    @PutMapping("/ico")
-    public ResultJson<Object> uploadFile(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        String token = request.getHeader("token");
+    @PostMapping("/ico")
+    public ResultJson<Object> uploadFile(@RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
+        //String token = request.getHeader("token");
         String id = JwtUtil.getId(token);
         return this.userService.uploadIco(file, id);
     }
